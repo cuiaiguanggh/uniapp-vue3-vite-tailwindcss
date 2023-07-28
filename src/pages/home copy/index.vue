@@ -12,6 +12,10 @@
       <text class="text-xl text-black title dark:text-red-300">
         {{ user.name ? user.name : title }}
       </text>
+
+      <text class="text-xl text-black title dark:text-red-300">
+        姓名：{{ userInfo.name }}
+      </text>
     </view>
     <view class="m-2 dark">
       <uni-badge size="small" :text="100" absolute="rightTop" type="primary">
@@ -22,7 +26,7 @@
           class="p-2 text-xs text-white bg-sky-500 dark:bg-black"
           data-id="1223"
           @click="componentClick">
-          这是一个登录按钮
+          这是一个登录按钮2ss
         </button>
       </uni-badge>
     </view>
@@ -47,6 +51,8 @@
         </button>
       </template>
     </test>
+
+    <uni-badge text="1">aaaa</uni-badge>
   </view>
   <u-tabbar
     :value="value1"
@@ -66,12 +72,17 @@
 <script setup lang="ts">
 import { ref, inject } from 'vue'
 import { useUserStore } from '@/stores/user'
+
+import { useAppStore } from '@/stores/home'
 import { storeToRefs } from 'pinia'
 import test from '../../components/test.vue'
 import useHttpRepositories from '@/composables/useHttpRepositories'
 const title = ref('Hello123')
 const showArr = ref([true, false, false, false])
 const userStore = useUserStore()
+
+const appStore = useAppStore()
+console.log('appStore: ', appStore)
 const { user } = storeToRefs(userStore)
 const { $http } = useHttpRepositories()
 const show = ref(false)
@@ -88,6 +99,12 @@ const componentClick = (e: any) => {
     }
   })
 }
+
+appStore.getUserInfo()
+
+const { userInfo } = storeToRefs(appStore)
+console.log('userInfo: ', userInfo)
+
 const click1 = (e: any) => {
   console.log(e)
 }

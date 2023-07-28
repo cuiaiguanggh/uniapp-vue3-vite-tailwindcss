@@ -19,4 +19,6 @@ onHide(() => {
 @import 'tailwindcss/utilities';
 @import '@/static/css/initialize.scss';
 @import '@/static/css/index.scss';
+@import '@/uni.scss';
+@import '@/css/index.scss';
 </style>

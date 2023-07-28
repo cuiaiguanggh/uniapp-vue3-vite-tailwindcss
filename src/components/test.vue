@@ -13,11 +13,12 @@
           <slot :item="item" :index="index" :twice="twiceTheCounter"></slot>
         </view>
       </view>
+      
     </view>
   </view>
 </template>
 
-<script lang="ts">
+<script lang="ts" >
 import { ref, computed } from "vue";
 export default {
   components: {},
